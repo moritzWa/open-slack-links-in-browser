@@ -1,0 +1,36 @@
+{
+  "manifest_version": 3,
+  "name": "Slack in Browser",
+  "version": "1.1.0",
+  "description": "Skips Slack's Launching page and opens the link in the browser.",
+  "permissions": ["declarativeNetRequest"],
+  "host_permissions": [
+    "*://*.slack.com/*",
+    "*://*.enterprise.slack.com/*"
+  ],
+  "declarative_net_request": {
+    "rule_resources": [
+      {
+        "id": "archive_to_messages",
+        "enabled": true,
+        "path": "rules.json"
+      }
+    ]
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "*://*.slack.com/archives/*",
+        "*://*.slack.com/ssb/*",
+        "*://*.slack.com/team/*",
+        "*://*.enterprise.slack.com/archives/*",
+        "*://*.enterprise.slack.com/ssb/*",
+        "*://*.enterprise.slack.com/team/*"
+      ],
+      "js": ["redirect.js"],
+      "run_at": "document_start",
+      "all_frames": false,
+      "world": "MAIN"
+    }
+  ]
+}
