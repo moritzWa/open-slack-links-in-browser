@@ -1,4 +1,8 @@
-# Slack in Browser
+# Open Slack Links in Browser
+
+![A Slack archive link opens in the browser instead of the Launching page](docs/demo.gif)
+
+The same clip is in [docs/demo.mp4](docs/demo.mp4).
 
 Slack archive links open a Launching page that tries to start the desktop app. This extension sends those links to the web client instead.
 
