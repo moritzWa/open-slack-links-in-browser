@@ -19,6 +19,7 @@ The page's own "open this link in your browser" href is the same URL with `/arch
 Chrome reads the extension from that path. Leave the folder where you loaded it.
 After updating, use its Reload button in `chrome://extensions` to pick up changes,
 including the toolbar icon.
+Or run `python3 scripts/reload` to reload it without restarting Chrome.
 
 The editable icon is `icons/icon.svg`. Rebuild the 16, 32, 48 and 128px PNGs with
 `python3 scripts/build-icons.py` (requires ImageMagick).

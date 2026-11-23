@@ -1,0 +1,32 @@
+#!/usr/bin/env python3
+"""Reload the unpacked extension without restarting Chrome."""
+import hashlib
+import json
+from pathlib import Path
+import subprocess
+import sys
+import uuid
+
+extension = Path(__file__).resolve().parent.parent
+extension_id = ''.join(chr(ord('a') + int(c, 16)) for c in hashlib.sha256(str(extension).encode()).hexdigest()[:32])
+chrome_home = Path.home() / 'Library/Application Support/Google/Chrome'
+found = set()
+for prefs in list(chrome_home.glob('*/Preferences')) + list(chrome_home.glob('*/Secure Preferences')):
+    try:
+        data = json.loads(prefs.read_text())
+        settings = data.get('extensions.settings', data.get('extensions', {}).get('settings', {}))
+        for key, value in settings.items():
+            if value.get('path') and Path(value['path']).expanduser().resolve() == extension:
+                found.add(key)
+    except (OSError, ValueError, TypeError):
+        continue
+if len(found) == 1:
+    extension_id = found.pop()
+elif len(found) > 1:
+    raise SystemExit('Multiple installations found; remove the duplicate installation first.')
+url = f'chrome-extension://{extension_id}/reload.html?nonce={uuid.uuid4().hex}'
+if '--dry-run' in sys.argv:
+    print(url)
+else:
+    subprocess.run(['open', '-a', 'Google Chrome', url], check=True)
+    print('Requested Slack Links extension reload. Chrome stays running.')
