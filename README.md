@@ -1,5 +1,7 @@
 # Open Slack Links in Browser
 
+<img src="icons/icon-128.png" width="64" height="64" alt="Blue browser window with an open-link arrow">
+
 ![A Slack archive link opens in the browser instead of the Launching page](docs/demo.gif)
 
 The same clip is in [docs/demo.mp4](docs/demo.mp4).
@@ -15,6 +17,11 @@ The page's own "open this link in your browser" href is the same URL with `/arch
 3. Click Load unpacked and pick this folder.
 
 Chrome reads the extension from that path. Leave the folder where you loaded it.
+After updating, use its Reload button in `chrome://extensions` to pick up changes,
+including the toolbar icon.
+
+The editable icon is `icons/icon.svg`. Rebuild the 16, 32, 48 and 128px PNGs with
+`python3 scripts/build-icons.py` (requires ImageMagick).
 
 ## What it covers
 

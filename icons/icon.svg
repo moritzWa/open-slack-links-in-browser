@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="128" height="128" viewBox="0 0 128 128">
+  <title>Open Slack Links in Browser</title>
+  <rect x="4" y="4" width="120" height="120" rx="28" fill="#1267d6"/>
+  <rect x="24" y="28" width="80" height="72" rx="10" fill="#fff"/>
+  <path d="M24 48h80" stroke="#1267d6" stroke-width="6"/>
+  <circle cx="36" cy="38" r="3" fill="#1267d6"/>
+  <circle cx="46" cy="38" r="3" fill="#1267d6"/>
+  <path d="M46 82l34-24M62 58h18v18" fill="none" stroke="#1267d6" stroke-width="9" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
